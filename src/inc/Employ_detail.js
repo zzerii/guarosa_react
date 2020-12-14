@@ -1,47 +1,42 @@
-import React, { Component } from 'react';
-// import axios from 'axios';
+import React, { Component, useEffect, useState } from 'react';
+import axios from 'axios';
 
 
-class Employee_detail extends Component{
-    // state = axios.get('../test/test.json').data;
+const Employee_detail =()=>{
+   
+    const [employeeData, setEmplyeeData]=useState(0);
 
-    constructor(props) {
-        super(props);
-        this.state = {
-          error: null,
-          isLoaded: false,
-          item: []
-        };
-      }
-    
-      componentDidMount() {
-        fetch("../test/test.json")
-          .then(res => res.json())
-          .then(
-            (result) => {
-              this.setState({
-                isLoaded: true,
-                items: result
-              });
-            },
-            (error) => {
-              this.setState({
-                isLoaded: true,
-                error
-              });
-            }
-          )
-      }
+    const apiEndpoint="https://se87vc7273.execute-api.us-east-1.amazonaws.com/default/get-rds?user_id=1&table=user"
 
-  render(){
-    // const name=this.state.name;
-    // const birth=this.state.birth;
-    // const img=this.state.img;
-    // const task=this.state.task;
-    // const rank=this.state.rank;
-    // const userno=this.state.userno;
+    const getEmployeeStatus=async()=>{
+        await axios.get(apiEndpoint).then((res) => {
+            const data = res.data[0];
+            
+        setEmplyeeData(data)
 
-    
+        
+        });
+    };
+
+    useEffect(()=>{
+        getEmployeeStatus()
+    });
+
+    console.log(employeeData)
+    const name=employeeData.user_name;
+    const birth=employeeData.birth;
+    const img=employeeData.thumbnail;
+    const task="지나가던 사람01";
+    const rank=employeeData.user_rank;
+    const userno="123456";
+    // const name=employeeData.user_name;
+    // const birth=employeeData.birth;
+    // const img=employeeData.thumbnail;
+    // const task="지나가던 사람01";
+    // const rank=employeeData.user_rank;
+    // const userno="123456";
+
+
 
     return(
         <div class="container-fluid">
@@ -57,16 +52,16 @@ class Employee_detail extends Component{
                         <div class="cardbody row" id="employee_info">
                             <div class="col-lg-4 mb-4">
                                 <div style={{margin: '20px'}}>                            
-                                    <img src={item.img} style={{width: '300px'}} />
+                                    <img src={img} style={{width: '300px'}} />
                                 </div>
                             </div>
                             
                             <div class="col-lg-8 mb-4"  style={{fontSize:'x-large',padding:'90px 0px 0px 0px',textAlign:'left'}}>
-                                <div style={{marginBottom:'20px'}}><strong>이름:</strong> {item.name}</div>
-                                <div style={{marginBottom:'20px'}}><strong>생년월일:</strong> {item.birth}</div>
-                                <div style={{marginBottom:'20px'}}><strong>직무:</strong> {item.task}</div>
-                                <div style={{marginBottom:'20px'}}><strong>직급:</strong> {item.rank}</div>
-                                <div style={{marginBottom:'20px'}}><strong>사번:</strong> {item.userno}</div>
+                                <div style={{marginBottom:'20px'}}><strong>이름:</strong> {name}</div>
+                                <div style={{marginBottom:'20px'}}><strong>생년월일:</strong> {birth}</div>
+                                <div style={{marginBottom:'20px'}}><strong>직무:</strong> {task}</div>
+                                <div style={{marginBottom:'20px'}}><strong>직급:</strong> {rank}</div>
+                                <div style={{marginBottom:'20px'}}><strong>사번:</strong> {userno}</div>
                             </div>
                             
                         </div>
@@ -156,7 +151,7 @@ class Employee_detail extends Component{
 
         </div>
     );
-  }
+  
 }
 
 export default Employee_detail;
