@@ -114,7 +114,7 @@ class Sidebar extends Component{
         <div class="sidebar-card">
             <img class="sidebar-card-illustration mb-2" src="img/grs_member.png" alt=""/>
             <p class="text-center mb-2"><strong>과로사</strong>를 소개 합니다!</p>
-            <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">About GRS</a>
+            <a class="btn btn-info btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">About GRS</a>
         </div>
 
     </ul>
