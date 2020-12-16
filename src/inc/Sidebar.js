@@ -1,13 +1,32 @@
 import React, { Component, useEffect, useState } from 'react';
+import { Link } from "react-router-dom"
 import axios from 'axios';
 
 
 const Sidebar =()=>{
 
+    const [employeeData, setEmplyeeData]=useState(0);
+
+    const apiEndpoint="https://teoz6y07xc.execute-api.us-east-1.amazonaws.com/default/get-rds-alluser?table=user"
+
+    const getEmployeeStatus=async()=>{
+        await axios.get(apiEndpoint).then((res) => {
+            const data = res.data;
+            // console.log(data)
+        setEmplyeeData(data)
+
+        
+        });
+    };
+
+    useEffect(()=>{
+        getEmployeeStatus()
+    },[]);
+
     
   
     return(
-        <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
             <div class="sidebar-brand-icon rotate-n-15">
@@ -33,11 +52,19 @@ const Sidebar =()=>{
             직원 관리
         </div>
 
-        <li class="nav-item">
-                <a class="nav-link" href="/detail">
-                    <i class="fas fa-user"></i>
-                    <span>김채린</span></a>
-        </li>
+        {employeeData && employeeData.map((data) => {
+            const name = data.user_name;
+            const id= data.user_id;
+            const link='/detail/'+id;
+            // console.log(link)
+            return (
+                <li class="nav-item" key={id}>
+                        <a href={link} class="nav-link" >
+                            <i class="fas fa-user"></i>
+                            <span>{name}</span>
+                        </a>
+                </li>);
+        })}
         
         <li class="nav-item">
             <a class="nav-link" href="/detail">

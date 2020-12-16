@@ -26,12 +26,11 @@ import Test from './inc/Test';
 
 
 
-class App extends Component{
-  render(){
+const App =()=>{
     return(
       <div className="App" id="wrapper">
         <BrowserRouter>
-          <Route path="/" component={Sidebar} />
+          <Sidebar></Sidebar>
           <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
               <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -53,7 +52,7 @@ class App extends Component{
                     <Route exact path="/" component={Income} />
                   </div>
                   <Route exact path="/" component={EmployeeCard} />
-                  <Route path="/detail" component={Employee_detail} />
+                  <Route path="/detail/:id" component={Employee_detail} />
                   <div class="row">
                     <Route path="/detail" component={Areachart} />
                     <Route path="/detail" component={Piechart} />
@@ -67,7 +66,6 @@ class App extends Component{
         
       </div>
     );
-  }
 }
 
 export default App;

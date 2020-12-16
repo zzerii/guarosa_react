@@ -2,11 +2,14 @@ import React, { Component, useEffect, useState } from 'react';
 import axios from 'axios';
 
 
-const Employee_detail =()=>{
+const Employee_detail =({match})=>{
    
+    const id=match.params.id
+    console.log(id)
     const [employeeData, setEmplyeeData]=useState(0);
 
-    const apiEndpoint="https://se87vc7273.execute-api.us-east-1.amazonaws.com/default/get-rds?table=user&user_id=1"
+    const apiEndpoint='https://se87vc7273.execute-api.us-east-1.amazonaws.com/default/get-rds?table=user&user_id='+id;
+    console.log(apiEndpoint)
 
     const getEmployeeStatus=async()=>{
         await axios.get(apiEndpoint).then((res) => {
@@ -20,7 +23,7 @@ const Employee_detail =()=>{
 
     useEffect(()=>{
         getEmployeeStatus()
-    });
+    },[]);
 
     console.log(employeeData)
     const name=employeeData.user_name;
