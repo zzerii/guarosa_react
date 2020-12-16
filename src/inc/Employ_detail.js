@@ -26,9 +26,9 @@ const Employee_detail =()=>{
     const name=employeeData.user_name;
     const birth=employeeData.birth;
     const img=employeeData.thumbnail;
-    const task="지나가던 사람01";
+    const task=employeeData.task;
     const rank=employeeData.user_rank;
-    const userno="123456";
+    const userno=employeeData.user_no;
     
 
     return(

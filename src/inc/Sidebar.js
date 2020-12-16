@@ -1,8 +1,11 @@
-import { Component } from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component, useEffect, useState } from 'react';
+import axios from 'axios';
 
-class Sidebar extends Component{
-  render(){
+
+const Sidebar =()=>{
+
+    
+  
     return(
         <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -33,7 +36,7 @@ class Sidebar extends Component{
         <li class="nav-item">
                 <a class="nav-link" href="/detail">
                     <i class="fas fa-user"></i>
-                    <span>직원01</span></a>
+                    <span>김채린</span></a>
         </li>
         
         <li class="nav-item">
@@ -119,7 +122,7 @@ class Sidebar extends Component{
 
     </ul>
     );
-  }
+  
 }
 
 export default Sidebar;
