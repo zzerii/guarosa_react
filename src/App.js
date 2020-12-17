@@ -52,7 +52,7 @@ const App =()=>{
                     <Route exact path="/" component={Income} />
                   </div>
                   <Route exact path="/" component={EmployeeCard} />
-                  <Route path="/detail/:id" component={Employee_detail} />
+                  <Route path="/detail/:user_no" component={Employee_detail} />
                   <div class="row">
                     <Route path="/detail" component={Areachart} />
                     <Route path="/detail" component={Piechart} />

@@ -5,7 +5,7 @@ const EmployeeCard=()=>{
 
     const [employeeData, setEmplyeeData]=useState(0);
 
-    const apiEndpoint="https://teoz6y07xc.execute-api.us-east-1.amazonaws.com/default/get-rds-alluser?table=user"
+    const apiEndpoint="https://teoz6y07xc.execute-api.us-east-1.amazonaws.com/default/get-rds-alluser?table=chat_user"
 
     const getEmployeeStatus=async()=>{
         await axios.get(apiEndpoint).then((res) => {

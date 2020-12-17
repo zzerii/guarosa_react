@@ -4,11 +4,11 @@ import axios from 'axios';
 
 const Employee_detail =({match})=>{
    
-    const id=match.params.id
-    console.log(id)
+    const user_no=match.params.user_no
+    // console.log(id)
     const [employeeData, setEmplyeeData]=useState(0);
 
-    const apiEndpoint='https://se87vc7273.execute-api.us-east-1.amazonaws.com/default/get-rds?table=user&user_id='+id;
+    const apiEndpoint='https://se87vc7273.execute-api.us-east-1.amazonaws.com/default/get-rds?table=chat_user&user_id='+user_no;
     console.log(apiEndpoint)
 
     const getEmployeeStatus=async()=>{
@@ -31,7 +31,7 @@ const Employee_detail =({match})=>{
     const img=employeeData.thumbnail;
     const task=employeeData.task;
     const rank=employeeData.user_rank;
-    const userno=employeeData.user_no;
+    const userno=employeeData.user_id;
     
 
     return(

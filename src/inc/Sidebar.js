@@ -7,7 +7,7 @@ const Sidebar =()=>{
 
     const [employeeData, setEmplyeeData]=useState(0);
 
-    const apiEndpoint="https://teoz6y07xc.execute-api.us-east-1.amazonaws.com/default/get-rds-alluser?table=user"
+    const apiEndpoint="https://teoz6y07xc.execute-api.us-east-1.amazonaws.com/default/get-rds-alluser?table=chat_user"
 
     const getEmployeeStatus=async()=>{
         await axios.get(apiEndpoint).then((res) => {
@@ -54,11 +54,11 @@ const Sidebar =()=>{
 
         {employeeData && employeeData.map((data) => {
             const name = data.user_name;
-            const id= data.user_id;
-            const link='/detail/'+id;
+            const user_no= data.user_no;
+            const link='/detail/'+user_no;
             // console.log(link)
             return (
-                <li class="nav-item" key={id}>
+                <li class="nav-item" key={user_no}>
                         <a href={link} class="nav-link" >
                             <i class="fas fa-user"></i>
                             <span>{name}</span>
