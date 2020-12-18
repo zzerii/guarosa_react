@@ -4491,7 +4491,7 @@ input[type="button"].btn-block {
 
 .card-body {
   flex: 1 1 auto;
-  min-height: 1px;
+  min-height: 500px;
   padding: 1.25rem;
 }
 
@@ -11254,9 +11254,29 @@ body.sidebar-toggled footer.sticky-footer {
 #main_employee_card{
   margin: 20px; 
   align-self:center;
+  min-height: 210px;
 }
 
 /* 메인 직원 사진 */
 #main_employee_pic{
   width: 150px;
+}
+
+#message{
+  border: 4px solid #ffce2c;
+  border-radius: 10px;
+  min-height: 200px;
+  min-width: 300px;
+  margin: 50px;
+}
+
+#sendButton{
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  font-size: large;
+  padding: 5px 10px;
+  float:'right'
+  
+
 }

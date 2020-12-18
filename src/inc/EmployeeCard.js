@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const EmployeeCard=()=>{
 
+    // 직원 정보 불러오기
     const [employeeData, setEmplyeeData]=useState(0);
 
     const apiEndpoint="https://teoz6y07xc.execute-api.us-east-1.amazonaws.com/default/get-rds-alluser?table=chat_user"
@@ -12,14 +13,43 @@ const EmployeeCard=()=>{
             const data = res.data;
             console.log(data)
         setEmplyeeData(data)
-
-        
         });
     };
 
     useEffect(()=>{
         getEmployeeStatus()
     },[]);
+
+//     const voiceApiEndpoint=[];
+//    {employeeData&&employeeData.map((employee)=>{
+//         voiceApiEndpoint.push("https://se87vc7273.execute-api.us-east-1.amazonaws.com/default/get-rds?table=voice_emotion&user_id="+employee.user_no);
+
+//     });
+//     }
+//     // 목소리 감정 정보 불러오기
+//     const [voiceData, setVoiceData]=useState(0);
+
+//     console.log(voiceApiEndpoint)
+//     const getVoiceStatus=async()=>{
+//         await axios.get(voiceApiEndpoint['0']).then((res) => {
+//             const voicedata = res.data;
+//             console.log(voicedata)
+//         setVoiceData(voicedata)
+//         });
+//     };
+
+//     useEffect(()=>{
+//         getVoiceStatus()
+//     },[]);
+
+    // var good_emotion=0;
+    // var bad_emotion=0;
+    // {voiceData&&voiceData.map((data)=>{
+    //     if data.emotion:
+    //     emotion
+
+    // });
+    // }
 
 
     return(
