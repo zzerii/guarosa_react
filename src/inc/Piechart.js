@@ -111,7 +111,7 @@ const PieChart =({match})=>{
                             }
                             }}
                             data={expData}
-                            height={300}
+                            height={200}
                         />
                     </div>
             </div>
