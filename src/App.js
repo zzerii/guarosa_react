@@ -54,8 +54,8 @@ const App =()=>{
                   <Route exact path="/" component={EmployeeCard} />
                   <Route path="/detail/:user_no" component={Employee_detail} />
                   <div class="row">
-                    <Route path="/detail" component={Areachart} />
-                    <Route path="/detail" component={Piechart} />
+                    <Route path="/detail/:user_no" component={Areachart} />
+                    <Route path="/detail/:user_no" component={Piechart} />
                   </div>
                 </switch>
               </div>

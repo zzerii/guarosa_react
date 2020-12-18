@@ -1,12 +1,86 @@
 import React, { Component, useEffect, useState } from 'react';
 import axios from 'axios';
+import { Doughnut } from "react-chartjs-2";
+
+const PieChart =({match})=>{
+
+    const user_no=match.params.user_no
+    // console.log(id)
+    const [voiceData, setVoiceData]=useState(0);
+
+    const apiEndpoint='https://se87vc7273.execute-api.us-east-1.amazonaws.com/default/get-rds?table=voice_emotion&user_id='+user_no;
+    // console.log(apiEndpoint)
+
+    const getVoiceStatus=async()=>{
+        await axios.get(apiEndpoint).then((res) => {
+            const data = res.data;
+        setVoiceData(data)
+        // console.log(data)
+        });
+    };
 
 
-const PieChart =()=>{
+    let emotionList=[];
+    var Happy=0, Sad=0, Angry=0,Fearful=0, Disgust=0, Surprised=0;
+    
+    {voiceData&&voiceData.map((data)=>{
+        // emotionList.push(data.emotion)
+        switch(data.emotion){
+            case 1:
+                Happy+=1
+                break;
+            case 2:
+                Sad+=1
+                break;
+            case 3:
+                Angry+=1
+                break;
+            case 4:
+                Fearful+=1
+                break;
+            case 5:
+                Disgust+=1
+                break;
+            case 6:
+                Surprised+=1
+                break;
+        }
+        
+    });}
+    
+    emotionList=[Happy, Sad, Angry, Fearful, Disgust, Surprised]
+
+    console.log(emotionList)
+    useEffect(()=>{
+        getVoiceStatus()
+
+    },[]);
 
 
+    const expData = {
+        labels: ["Happy", "Sad", "Angry", "Fearful", "Disgust", "Surprised"],
+        datasets: [
+          {
+            labels: ["Happy", "Sad", "Angry", "Fearful", "Disgust", "Surprised"],
+            data: emotionList,
+            borderWidth: 2,
+            hoverBorderWidth: 3,
+            backgroundColor: [
+              "rgba(238, 102, 121, 1)",
+              "rgba(98, 181, 229, 1)",
+              "rgba(255, 198, 0, 1)",
+              "rgba(115, 255, 128, 1)",
+              "rgba(238, 253, 97, 1)",
+              "rgba(128, 150, 242, 1)",
+              
+            ],
+            fill: true
+          }
+        ]
+      };
     return(
         <div class="col-xl-4 col-lg-5">
+
             <div class="card shadow mb-4">
                 {/* <!-- Card Header - Dropdown --> */}
                 <div
@@ -28,22 +102,18 @@ const PieChart =()=>{
                     </div>
                 </div>
                 {/* <!-- Card Body --> */}
-                <div class="card-body">
-                    <div class="chart-pie pt-4 pb-2">
-                        <canvas id="myPieChart"></canvas>
+                <div class="card-body" id="chart_cardbody">
+                        <Doughnut
+                            options={{
+                            legend: {
+                                display: true,
+                                position: "bottom"
+                            }
+                            }}
+                            data={expData}
+                            height={300}
+                        />
                     </div>
-                    <div class="mt-4 text-center small">
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-danger"></i> Angry
-                        </span>
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-info"></i> Happy
-                        </span>
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-warning"></i> Sad
-                        </span>
-                    </div>
-                </div>
             </div>
         </div>
     );

@@ -11280,3 +11280,7 @@ body.sidebar-toggled footer.sticky-footer {
   
 
 }
+
+#chart_cardbody{
+  height: 350px;
+}

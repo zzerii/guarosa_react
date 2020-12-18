@@ -34,7 +34,7 @@ const Employee_detail =({match})=>{
     const img=employeeData.thumbnail;
     const task=employeeData.task;
     const rank=employeeData.user_rank;
-    const userno=employeeData.user_id;
+    const userno=employeeData.user_no;
 
 
     // Websocket

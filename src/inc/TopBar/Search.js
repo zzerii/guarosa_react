@@ -1,7 +1,44 @@
-import { Component } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Search=()=>{
+
+    const [employeeData, setEmplyeeData]=useState(0);
+
+    const apiEndpoint="https://teoz6y07xc.execute-api.us-east-1.amazonaws.com/default/get-rds-alluser?table=chat_user"
+
+    const getEmployeeStatus=async()=>{
+        await axios.get(apiEndpoint).then((res) => {
+            const data = res.data;
+            console.log(data)
+        setEmplyeeData(data)
+        });
+    };
+
+    useEffect(()=>{
+        getEmployeeStatus()
+    },[]);
+
+
+    function search_employee() {
+
+        const search = document.getElementById('search').value;
+
+        {employeeData && employeeData.map((data) => {
+            const name = data.user_name;
+            const user_no= data.user_no;
+            
+    
+            if (search==name){
+                const link='/detail/'+user_no;
+                console.log(link)
+                document.location.href = link
+            }
+    
+        })}
+        
+    }
+    
 
     
 
@@ -10,10 +47,10 @@ const Search=()=>{
         <form
             class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-                <input type="text" class="form-control bg-light border-0 small" placeholder="직원 검색"
+                <input type="text" class="form-control bg-light border-0 small" id='search' placeholder="직원 검색"
                     aria-label="Search" aria-describedby="basic-addon2"/>
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">
+                    <button class="btn btn-primary" type="button" onClick={search_employee} >
                         <i class="fas fa-search fa-sm"></i>
                     </button>
                 </div>

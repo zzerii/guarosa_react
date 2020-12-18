@@ -26,19 +26,16 @@ const Sidebar =()=>{
     
   
     return(
-    <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar" style={{paddingTop:'10px'}}> 
 
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-heart"></i>
-            </div>
-            <div class="sidebar-brand-text mx-3">GRS</div>
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-heart"></i>
-            </div>
-        </a>
+        
+        <div style={{textAlign:'center'}}>
+            <a href="/">
+                <img src='https://employee-img-grs.s3.ap-northeast-2.amazonaws.com/logo/LOGO_1.png'  style={{maxWidth:'200px'}}/>
+            </a>
+        </div>
 
-        <hr class="sidebar-divider my-0"/>
+        <hr class="sidebar-divider my-0" />
 
         <li class="nav-item active">
             <a class="nav-link" href="/">
