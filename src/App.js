@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+
 import './App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -18,11 +18,9 @@ import Footer from './inc/Footer';
 import Piechart from './inc/Piechart';
 import Areachart from './inc/Areachart';
 import CountEmployee from './inc/CountEmployee';
-import RestEmployee from './inc/RestEmployee';
 import StressAvg from './inc/StressAvg';
 import Income from './inc/Income';
 import Employee_detail from './inc/Employ_detail';
-import Test from './inc/Test';
 
 
 
@@ -47,7 +45,6 @@ const App =()=>{
                 <switch>
                   <div class='row'>
                     <Route exact path="/" component={CountEmployee} />
-                    <Route exact path="/" component={RestEmployee} />
                     <Route exact path="/" component={StressAvg} />
                     <Route exact path="/" component={Income} />
                   </div>
