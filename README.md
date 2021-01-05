@@ -55,7 +55,7 @@ In the project directory, you can run:
 
 **(Eyeblink+Audio emotion+Position check+Facial emotion check)**
 
-https://github.com/Guarosa/Guarosa_IoT.git
+https://github.com/Guarosa/Guarosa_AI-IoT.git
 
 #### 과로사 React WebPage
 
