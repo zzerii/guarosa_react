@@ -221,9 +221,10 @@ VDT 증후군으로부터 사용자를 보호하는 우리 서비스의 타겟 �
 
 
 <h4>1)  워드 클라우드
+    
 
 
-•네이버 서비스 **REST** **API** 활용해 뉴스, 블로그 검색결과 출력
+•네이버 서비스 **REST API** 활용해 뉴스, 블로그 검색결과 출력
 
 •**형태소 분석기**로 명사 추출
 
@@ -232,6 +233,7 @@ VDT 증후군으로부터 사용자를 보호하는 우리 서비스의 타겟 �
 
 
 <h4>2)  동시 출현 단어 분석
+    
 
 
 •R의 qgraph 패키지 활용해 단어 간 **연관분석** 실시
@@ -241,6 +243,7 @@ VDT 증후군으로부터 사용자를 보호하는 우리 서비스의 타겟 �
 
 
 <h4>3)  이미지 크롤링 및 전 처리
+    
 
 
 •**selenium** 패키지 활용해 눈 이미지 **동적** **크롤링**
@@ -250,6 +253,7 @@ VDT 증후군으로부터 사용자를 보호하는 우리 서비스의 타겟 �
 ![image-20210105234530229](https://user-images.githubusercontent.com/61822411/103668794-dc17f100-4fba-11eb-962c-66eac6b6c0df.png)
 
 <h4>4)  그래프 시각화
+    
 
 
 •**matplotlib, seaborn** 으로 데이터 시각화
@@ -269,6 +273,8 @@ VDT 증후군으로부터 사용자를 보호하는 우리 서비스의 타겟 �
 
 #### Project Architecture
 
+
+
 ![image-20210105234625829](https://user-images.githubusercontent.com/61822411/103668840-ec2fd080-4fba-11eb-8aaa-be5642ab8064.png)
 
 사무직 근로자들의 업무 컴퓨터에서 백그라운드로 실행되게 하여 모델 결과값이 DB로 저장된다.
@@ -283,30 +289,39 @@ Django의 웹소켓 통신을 위해 Channels 라이브러리를 활용했고 �
 
 장고 서버는 EC2를 통해 배포를 했고, 근로자들에게 띄워주게 된다.
 
-사번을 받아 회원가입시 사진은 Local에 저장하지 않고 AMAZON S3버킷에 저장하고 해당 URL 정보를 DB에 저장한다.  
+사번을 받아 회원가입시 사진은 Local에 저장하지 않고 AMAZON S3버킷에 저장하고 해당 URL 정보를 DB에 저장한다.
 
 
 
 <h4> Websocket in Django(Channels)
 
 
+
+
 ![image-20210105234733552](https://user-images.githubusercontent.com/61822411/103668883-fb168300-4fba-11eb-9bf8-e7151b02aa96.png)
 
+
 Django에서 Channels 라이브러리를 사용해 WebSocket을 구현했다.
+
 싱글 서버 뿐만 아니라 샤딩 모드에서 뛰어난 성능을 내는 Redis를 채널 레이어 백엔드로 실행시켰다. 
 
 Django 자체는 동기식이지만 Channels를 사용하면 연결과 소켓을 비동기 처리한다.
 
 
 
+
 <h4> Django Web Page
+
+
 
 
 ![image-20210105234837536](https://user-images.githubusercontent.com/61822411/103668907-0669ae80-4fbb-11eb-8dd9-964137258175.png)
 
 
 
+
 근로자가 사용하는 모니터 받침대에 장착된 LCD에 보여지는 웹 페이지 UI 이다.
+
 시연영상 참고: https://youtu.be/k7WqyyGu_lI
 
 
@@ -314,16 +329,20 @@ Django 자체는 동기식이지만 Channels를 사용하면 연결과 소켓을
 <h4> RESTful API
 
 
+
+
 ![image-20210105234908177](https://user-images.githubusercontent.com/61822411/103668927-0d90bc80-4fbb-11eb-9687-9d3bfa539a55.png)
 
 
 
-Aws의 Lambd와 API-Gateway를 통해 구축했다.
+AWS의 Lambd와 API-Gateway를 통해 구축했다.
 상단의 이미지는 Postman을 통해 user테이블에서 12368의 user_id를 가진 정보를 json형태로 수신하는 예시이다.
 
 
 
+
 <h4> React WebPage
+
 
 
 
@@ -340,12 +359,15 @@ Aws의 Lambd와 API-Gateway를 통해 구축했다.
 
 ![image-20210105235110045](https://user-images.githubusercontent.com/61822411/103668963-1bded880-4fbb-11eb-9704-0f42bb63101f.png)
 
+
 관리자 페이지이다.
 직원들의 상태를 실시간으로 확인 가능하며 감정과 눈 건강을 통해 직원들의 피로를 확인하여, 해당 직원에게 메시지를 보내 휴식을 권장 할 수 있다.
 
 
 
 <h4>AWS IoT Core(MQTT)
+
+
 
 
 ![image-20210105235346711](https://user-images.githubusercontent.com/61822411/103668987-26996d80-4fbb-11eb-9e0d-8998157f511f.png)
@@ -356,6 +378,10 @@ Publisher부분은 실행파일 내부 코드이다.
 
 오른쪽 코드는 눈 깜박인 시간이 20초가 넘게 되면 MQTT 통신을 통해 라즈베리파이로 ‘2’ 값을 보내고, 해당 값을 DB에 넣는 코드이다.
 아래의 Subscriber부분은 라즈베리 파이에서 동작하는 코드로 MQTT 통신값으로 전달받은 값을 다시 웹소켓 통신을 통해 웹서버로 보내는 모습이다.
+
+
+
+
 
 
 
@@ -383,6 +409,9 @@ AI과정에서는 눈 깜빡임, 자세 교정, 감정 분석 모델 등 세가�
 
 
 
+
+
+
 ![image-20210105235535844](https://user-images.githubusercontent.com/61822411/103669070-387b1080-4fbb-11eb-9a6d-3adc915f3278.png)
 
 
@@ -390,6 +419,9 @@ AI과정에서는 눈 깜빡임, 자세 교정, 감정 분석 모델 등 세가�
 학습모델은 총 3계층의 Convolution layer와 FC layer를 사용한 Simple한 구성으로,
 
 테스트 셋과 실 사용 환경 시험 시 100%에 가까운 정확도를 보였다.
+
+
+
 
 ![image-20210105235602618](https://user-images.githubusercontent.com/61822411/103669091-403ab500-4fbb-11eb-8980-1e550dc58806.png)
 
@@ -401,7 +433,13 @@ Dlib API를 이용해 68개의 얼굴 랜드마크를 추출하였고,
 
 
 
+
+
+
+
 <h4>2. 자세 교정 모델(Posture Tracker)
+
+
 
 
 ![image-20210105235642004](https://user-images.githubusercontent.com/61822411/103669117-492b8680-4fbb-11eb-9b65-1962c282e5c6.png)
@@ -416,11 +454,17 @@ Dlib API를 이용해 68개의 얼굴 랜드마크를 추출하였고,
 
 
 
+
+
+
 ![image-20210105235658883](https://user-images.githubusercontent.com/61822411/103669140-521c5800-4fbb-11eb-9cb1-e7e89a74afd3.png)
 
 여러 실험 결과 앉은 자세에서 양 어깨의 landmark가 가장 정확히 포착되어, 이를 통해 정자세와 잘못된 자세의 구분 기준을 수립했다.
 
 양 어깨의 x좌표 길이 대비 y좌표 길이 비율을 기울어짐 수치로 잡아 0.2를 기준으로,  그 미만이면 정자세, 그 이상이면 비뚤어진 자세로 판정한다. 
+
+
+
 
 
 
@@ -432,7 +476,13 @@ Dlib API를 이용해 68개의 얼굴 랜드마크를 추출하였고,
 
 
 
+
+
+
 <h4>3. 감정 분석 모델(Emotion Recognition)
+
+
+
 
 
 ![image-20210105235802658](https://user-images.githubusercontent.com/61822411/103669193-63656480-4fbb-11eb-9c98-85d8fbd23b34.png)
@@ -449,6 +499,9 @@ Happy, Sad, Fearful 등8가지 카테고리로 감정을 구분하고자 하였�
 
 
 
+
+
+
 ![image-20210105235822324](https://user-images.githubusercontent.com/61822411/103669217-6d876300-4fbb-11eb-8581-db5bfd773c0b.png)
 
 우리는 음성데이터에서 5가지 음성 특징을 추출하여 사용하였다.
@@ -458,6 +511,9 @@ Happy, Sad, Fearful 등8가지 카테고리로 감정을 구분하고자 하였�
 둘째로, Zero Crossing Rate을 통해 음성 에너지의 차이를 특징으로 추출하였다.
 
 셋째로, RMS로 정상시계열의 통계적 특성을 담아냈다.
+
+
+
 
 ![image-20210105235858503](https://user-images.githubusercontent.com/61822411/103669270-7a0bbb80-4fbb-11eb-886a-9280ff9bc140.png)
 
@@ -469,11 +525,17 @@ Mel Spectrogram과 MFCC를 특징으로 추출하였다.
 
 
 
+
+
+
 ![image-20210105235915527](https://user-images.githubusercontent.com/61822411/103669290-80019c80-4fbb-11eb-8389-c69354071648.png)
 
 
 
 학습 모델링은 4계층의 1D Convolution layer와 2계층의 FC layer층을 사용하여 음성 특성데이터 8가지 감정으로 분류해 냈다.
+
+
+
 
 
 
@@ -485,11 +547,17 @@ Mel Spectrogram과 MFCC를 특징으로 추출하였다.
 
 
 
+
+
+
 ![image-20210106000041198](https://user-images.githubusercontent.com/61822411/103669335-927bd600-4fbb-11eb-9172-392cf518784c.png)
 
 동영상은 초당 30장으로 변환한 후 Face detector의 좌표보다 넓게 구간을 잡아 224x224 크기로 크롭하여 약 10만장의 이미지를 추출했다.
 
 이미지는 TFrecord로 변환하여 데이터 로드하는 시간을 단축했다.
+
+
+
 
 
 
@@ -500,6 +568,9 @@ Mel Spectrogram과 MFCC를 특징으로 추출하였다.
 때문에, 채널 수와 메모리의 크기가 가벼운  MobileNetV2를 사용했고,
 
 활성화함수로는 PReLU를 써 각 레이어마다 알맞은 알파값으로 학습시킬 수 있도록 했다.
+
+
+
 
 
 
@@ -515,13 +586,18 @@ Mel Spectrogram과 MFCC를 특징으로 추출하였다.
 
 
 
-<h4> IoT
+
+
+
+### IoT
 
 
 <hr>
 
 
 <h4>IoT 흐름도
+
+
 
 
 ![image-20210106000248450](https://user-images.githubusercontent.com/61822411/103669434-ae7f7780-4fbb-11eb-94dd-58554984d683.png)
@@ -533,7 +609,11 @@ Mel Spectrogram과 MFCC를 특징으로 추출하였다.
 
 
 
+
+
 <h4> 영상 스트리밍 및 음성 파일 제공
+
+
 
 
 ![image-20210106000339832](https://user-images.githubusercontent.com/61822411/103669461-b5a68580-4fbb-11eb-87c7-5160ab7fc069.png)
@@ -545,7 +625,11 @@ Mel Spectrogram과 MFCC를 특징으로 추출하였다.
 
 
 
+
+
 <h4> 하드웨어::모니터 받침대 제작
+
+
 
 
 ![image-20210106000408155](https://user-images.githubusercontent.com/61822411/103669487-bccd9380-4fbb-11eb-8b40-a0229b670e4c.png)
@@ -558,7 +642,10 @@ Mel Spectrogram과 MFCC를 특징으로 추출하였다.
 
 
 
+
+
 <h4> 거북목 방지 경고 기능
+
 
 
 
@@ -569,12 +656,18 @@ Mel Spectrogram과 MFCC를 특징으로 추출하였다.
 
 
 
+
+
 <h4>MQTT
+
+
 
 
 ![image-20210106000553746](https://user-images.githubusercontent.com/61822411/103669532-ce16a000-4fbb-11eb-9a6a-0fbe792dd99f.png)
 
  MQTT를 통해 음성 데이터를 전달 받아 감정에 따른 값을 웹 소켓과 아두이노에게 전송하여 값에 따른 처리를 하는 기능을 구현하였다. 
+
+
 
 
 
