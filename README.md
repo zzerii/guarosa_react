@@ -29,6 +29,10 @@ In the project directory, you can run:
 
 https://github.com/Guarosa/Guarosa_IoT.git
 
+#### 과로사 React WebPage
+
+https://github.com/zzerii/guarosa_react.git
+
 #### 과로사 Django Git hub(Channels)
 
 https://github.com/baejinsoo/grs_django_channels
