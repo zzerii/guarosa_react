@@ -8,7 +8,7 @@
     목차
 </h1>
 
-(About This Git hub)[#About-This-Git-hub]
+(About This Git hub)[#-About-This-Git-hub]
 
 # About This Git hub
 
