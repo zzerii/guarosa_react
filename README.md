@@ -8,6 +8,7 @@
     목차
 </h1>
 
+
 [TOC]
 
 # About This Git hub
@@ -36,6 +37,7 @@ https://github.com/baejinsoo/grs_django_channels
 
 
 
+
 # Project [ Wellness & Guarosa ]
 
 
@@ -58,7 +60,7 @@ https://github.com/baejinsoo/grs_django_channels
 
 
 
-![image-20210105232322404](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210105232322404.png)
+![image-20210105232322404](https://user-images.githubusercontent.com/61822411/103668083-1339d280-4fba-11eb-8d84-e33c53c2f887.png)
 
 ![image-20210105232514063](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210105232514063.png)
 
@@ -131,6 +133,7 @@ Wellness & Guarosa는 사무직 종사자들이 근무 중 경각심을 가지�
 
 <hr>
 
+
 ## 3. 사업의 확장성
 
 
@@ -175,6 +178,7 @@ VDT 증후군으로부터 사용자를 보호하는 우리 서비스의 타겟 �
 
 <hr>
 
+
 ## 4. 과정별 역할
 
 
@@ -183,7 +187,9 @@ VDT 증후군으로부터 사용자를 보호하는 우리 서비스의 타겟 �
 
 <hr>
 
+
 <h4>1)  워드 클라우드
+
 
 •네이버 서비스 **REST** **API** 활용해 뉴스, 블로그 검색결과 출력
 
@@ -195,6 +201,7 @@ VDT 증후군으로부터 사용자를 보호하는 우리 서비스의 타겟 �
 
 <h4>2)  동시 출현 단어 분석
 
+
 •R의 qgraph 패키지 활용해 단어 간 **연관분석** 실시
 
 불용어처리, 정규표현식으로 **단어 전 처리**
@@ -203,6 +210,7 @@ VDT 증후군으로부터 사용자를 보호하는 우리 서비스의 타겟 �
 
 <h4>3)  이미지 크롤링 및 전 처리
 
+
 •**selenium** 패키지 활용해 눈 이미지 **동적** **크롤링**
 
 •필요한 부분을 **crop**하는 이미지 데이터 전 처리
@@ -210,6 +218,7 @@ VDT 증후군으로부터 사용자를 보호하는 우리 서비스의 타겟 �
 ![image-20210105234530229](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210105234530229.png)
 
 <h4>4)  그래프 시각화
+
 
 •**matplotlib, seaborn** 으로 데이터 시각화
 
@@ -224,6 +233,7 @@ VDT 증후군으로부터 사용자를 보호하는 우리 서비스의 타겟 �
 ### Cloud
 
 <hr>
+
 
 #### Project Architecture
 
@@ -247,6 +257,7 @@ Django의 웹소켓 통신을 위해 Channels 라이브러리를 활용했고 �
 
 <h4> Websocket in Django(Channels)
 
+
 ![image-20210105234733552](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210105234733552.png)
 
 Django에서 Channels 라이브러리를 사용해 WebSocket을 구현했다.
@@ -257,6 +268,7 @@ Django 자체는 동기식이지만 Channels를 사용하면 연결과 소켓을
 
 
 <h4> Django Web Page
+
 
 ![image-20210105234837536](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210105234837536.png)
 
@@ -269,6 +281,7 @@ Django 자체는 동기식이지만 Channels를 사용하면 연결과 소켓을
 
 <h4> RESTful API
 
+
 ![image-20210105234908177](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210105234908177.png)
 
 
@@ -279,6 +292,7 @@ Aws의 Lambd와 API-Gateway를 통해 구축했다.
 
 
 <h4> React WebPage
+
 
 
 
@@ -301,6 +315,7 @@ Aws의 Lambd와 API-Gateway를 통해 구축했다.
 
 <h4>AWS IoT Core(MQTT)
 
+
 ![image-20210105235346711](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210105235346711.png)
 
 AWS IoT Core를 사용해 MQTT통신과 WebSoket 통신을 통합한 모습이다.
@@ -316,11 +331,13 @@ Publisher부분은 실행파일 내부 코드이다.
 
 <hr>
 
+
 AI과정에서는 눈 깜빡임, 자세 교정, 감정 분석 모델 등 세가지 모델을 제작했다.
 
 
 
 <h4>1. 눈 깜빡임 모델(Eye Blink Detector)
+
 
 ![image-20210105235506878](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210105235506878.png)
 
@@ -354,6 +371,7 @@ Dlib API를 이용해 68개의 얼굴 랜드마크를 추출하였고,
 
 <h4>2. 자세 교정 모델(Posture Tracker)
 
+
 ![image-20210105235642004](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210105235642004.png)
 
 비뚤어진 자세를 포착하고자 했다.
@@ -383,6 +401,7 @@ Dlib API를 이용해 68개의 얼굴 랜드마크를 추출하였고,
 
 
 <h4>3. 감정 분석 모델(Emotion Recognition)
+
 
 ![image-20210105235802658](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210105235802658.png)
 
@@ -466,9 +485,12 @@ Mel Spectrogram과 MFCC를 특징으로 추출하였다.
 
 <h4> IoT
 
+
 <hr>
 
+
 <h4>IoT 흐름도
+
 
 ![image-20210106000248450](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210106000248450.png)
 
@@ -481,6 +503,7 @@ Mel Spectrogram과 MFCC를 특징으로 추출하였다.
 
 <h4> 영상 스트리밍 및 음성 파일 제공
 
+
 ![image-20210106000339832](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210106000339832.png)
 
 
@@ -491,6 +514,7 @@ Mel Spectrogram과 MFCC를 특징으로 추출하였다.
 
 
 <h4> 하드웨어::모니터 받침대 제작
+
 
 ![image-20210106000408155](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210106000408155.png)
 
@@ -506,6 +530,7 @@ Mel Spectrogram과 MFCC를 특징으로 추출하였다.
 
 
 
+
 ![image-20210106000520644](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210106000520644.png)
 
 거북목 방지 경고 기능을 구현하였다.
@@ -513,6 +538,7 @@ Mel Spectrogram과 MFCC를 특징으로 추출하였다.
 
 
 <h4>MQTT
+
 
 ![image-20210106000553746](C:\Users\ChaeLin\AppData\Roaming\Typora\typora-user-images\image-20210106000553746.png)
 
