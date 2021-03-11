@@ -770,4 +770,4 @@ Github: https://github.com/SOL-2
 
 Github: https://github.com/Lia-97i
 
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=zzerii&repo=https://github.com/zzerii/guarosa_react)](https://github.com/anuraghazra/github-readme-stats)
+
